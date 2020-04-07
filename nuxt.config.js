@@ -24,8 +24,8 @@ module.exports = {
   */
   css: [
     'element-ui/lib/theme-chalk/reset.css',
-    'element-ui/lib/theme-chalk/index.css'
-    // '~assets/css/main.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '~assets/css/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -57,20 +57,20 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/]
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
-    cache: true
+    // extend (config, ctx) {
+    //   if (ctx.isDev && ctx.isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // },
+    // cache: false
   }
 }
