@@ -16,6 +16,7 @@ module.exports = {
     'no-console': 'off',
     'nuxt/no-cjs-in-config': 'off',
     'indent': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'vue/singleline-html-element-content-newline': 'off'
   }
 }

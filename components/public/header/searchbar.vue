@@ -6,7 +6,7 @@
       </el-col>
       <el-col :span="15" class="center">
         <div class="wrapper">
-          <el-input placeholder="搜索商家或地点" v-model="search" @focus="focus" @blur="blur"/>
+          <el-input placeholder="搜索商家或地点" v-model="search" @focus="focus" @blur="blur" @input="input"/>
           <button class="el-button el-button--primary">
             <i class="el-icon-search"></i>
           </button>
@@ -82,6 +82,9 @@
         setTimeout(() => {
           this.isFocus = false
         }, 200)
+      },
+      input() {
+       console.log('input')
       }
     }
   }
