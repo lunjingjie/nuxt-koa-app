@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="m-menu">
-      <dl class="nav">
+      <dl class="nav" @mouseleave="mouseleave">
         <dt>全部分类</dt>
-        <dd v-for="(item, index) in menu" :key="index">
+        <dd v-for="(item, index) in menu" :key="index" @mouseenter="enter">
           <i :class="item.type"></i>
           {{item.name}}
           <span class="arrow"/>
         </dd>
       </dl>
-      <div class="detail">
-        <template>
-          <h4>标题</h4>
-          <span>子项</span>
+      <div class="detail" v-if="kind" @mouseenter="sover" @mouseleave="sout">
+        <template v-for="(item, index) in curdetail.child">
+          <h4 :key="index">{{item.title}}</h4>
+          <span v-for="v in item.child" :key="v">{{v}}</span>
         </template>
       </div>
     </div>
@@ -56,14 +56,36 @@
          },
          {
            type: 'takeout',
-           name: '外卖'
+           name: '外卖',
+           child: [
+             {
+               title: '外卖',
+               child: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐']
+             }
+           ]
          }
        ]
      }
     },
     computed: {
       curdetail() {
-        return []
+        return this.menu.filter(item => item.type === this.kind)[0]
+      }
+    },
+    methods: {
+      mouseleave() {
+        this.timer = setTimeout(() => {
+          this.kind = ''
+        }, 150)
+      },
+      enter(e) {
+        this.kind = e.target.querySelector('i').className
+      },
+      sover() {
+        clearTimeout(this.timer)
+      },
+      sout() {
+        this.kind = ''
       }
     }
   }

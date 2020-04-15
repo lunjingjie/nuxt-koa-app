@@ -1,0 +1,78 @@
+<template>
+  <div class="page-register">
+    <article class="header">
+      <header>
+        <a href="/" class="site-logo"></a>
+        <span class="login">
+          <em class="bold">已有美团账号?</em>
+          <a href="/login">
+            <el-botton type="primary" size="small">
+              登录
+            </el-botton>
+          </a>
+        </span>
+      </header>
+    </article>
+    <section>
+      <el-form ref="ruleForm"
+               :model="ruleForm"
+               :rules="rules"
+               label-width="100px"
+               class="demo-ruleForm"
+      >
+        <el-form-item label="昵称"
+                      prop="name"
+        >
+          <el-input v-model="ruleForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱"
+                      prop="email"
+        >
+          <el-input v-model="ruleForm.email"></el-input>
+          <el-button size="mini" round @click="sendMsg">发送验证码</el-button>
+          <span class="status">{{statusMsg}}</span>
+        </el-form-item>
+        <el-form-item label="验证码"
+                      prop="code"
+        >
+          <el-input v-model="ruleForm.code" maxlength="4"></el-input>
+        </el-form-item>
+        <el-form-item label="密码"
+                      prop="pwd"
+        >
+          <el-input v-model="ruleForm.cpwd" type="password"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码"
+                      prop="pwd"
+        >
+          <el-input v-model="ruleForm.cpwd" type="password"></el-input>
+        </el-form-item>
+        <el-form-item
+        >
+          <el-button type="primary" @click="register">同意以上协议并注册</el-button>
+          <div class="error">{{error}}</div>
+        </el-form-item>
+      </el-form>
+    </section>
+  </div>
+</template>
+<script>
+  export default {
+    layout: 'blank',
+    data() {
+      return {
+        statusMsg: '',
+        error: ''
+      }
+    },
+    methods: {
+      sendMsg() {
+      },
+      register() {
+      }
+    }
+  }
+</script>
+<style lang="scss">
+  @import "@/assets/css/register/index.scss";
+</style>
