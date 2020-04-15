@@ -14,36 +14,42 @@
       </header>
     </article>
     <section>
-      <el-form ref="ruleForm"
-               :model="ruleForm"
-               :rules="rules"
-               label-width="100px"
-               class="demo-ruleForm"
+      <el-form
+        ref="ruleForm"
+        :model="ruleForm"
+        :rules="rules"
+        label-width="100px"
+        class="demo-ruleForm"
       >
-        <el-form-item label="昵称"
-                      prop="name"
+        <el-form-item
+          label="昵称"
+          prop="name"
         >
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱"
-                      prop="email"
+        <el-form-item
+          label="邮箱"
+          prop="email"
         >
           <el-input v-model="ruleForm.email"></el-input>
           <el-button size="mini" round @click="sendMsg">发送验证码</el-button>
           <span class="status">{{statusMsg}}</span>
         </el-form-item>
-        <el-form-item label="验证码"
-                      prop="code"
+        <el-form-item
+          label="验证码"
+          prop="code"
         >
           <el-input v-model="ruleForm.code" maxlength="4"></el-input>
         </el-form-item>
-        <el-form-item label="密码"
-                      prop="pwd"
+        <el-form-item
+          label="密码"
+          prop="pwd"
         >
           <el-input v-model="ruleForm.cpwd" type="password"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码"
-                      prop="pwd"
+        <el-form-item
+          label="确认密码"
+          prop="pwd"
         >
           <el-input v-model="ruleForm.cpwd" type="password"></el-input>
         </el-form-item>
