@@ -45,11 +45,11 @@
           label="密码"
           prop="pwd"
         >
-          <el-input v-model="ruleForm.cpwd" type="password"></el-input>
+          <el-input v-model="ruleForm.pwd" type="password"></el-input>
         </el-form-item>
         <el-form-item
           label="确认密码"
-          prop="pwd"
+          prop="cpwd"
         >
           <el-input v-model="ruleForm.cpwd" type="password"></el-input>
         </el-form-item>
@@ -57,6 +57,9 @@
         >
           <el-button type="primary" @click="register">同意以上协议并注册</el-button>
           <div class="error">{{error}}</div>
+        </el-form-item>
+        <el-form-item>
+          <a href="http://www.meituan.com/about/terms" class="f1" target="_blank">《美图网用户协议》</a>
         </el-form-item>
       </el-form>
     </section>
@@ -68,7 +71,49 @@
     data() {
       return {
         statusMsg: '',
-        error: ''
+        error: '',
+        ruleForm: {
+          name: '',
+          code: '',
+          pwd: '',
+          cpwd: '',
+          email: ''
+        },
+        rules: {
+          name: [{
+            required: true,
+            type: 'string',
+            message: '请输入昵称',
+            trigger: 'blur'
+          }],
+          email: [{
+            required: true,
+            type: 'email',
+            message: '请输入邮箱',
+            trigger: 'blur'
+          }],
+          pwd: [{
+            required: true,
+            message: '创建密码',
+            trigger: 'blur'
+          }],
+          cpwd: [{
+            required: true,
+            message: '确认密码',
+            trigger: 'blur'
+          }, {
+            validator: (rule, value, callback) => {
+              if (value === '') {
+                callback(new Error('请再次输入密码'))
+              } else if (value !== this.ruleForm.pwd) {
+                callback(new Error('两次输入密码不一致'))
+              } else {
+                callback()
+              }
+            },
+            trigger: 'blur'
+          }]
+        }
       }
     },
     methods: {
